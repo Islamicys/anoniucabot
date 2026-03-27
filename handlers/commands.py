@@ -92,11 +92,11 @@ async def send_post_to_group(message: Message, bot: Bot):
         group_id = -1003795268738
         try:
             await bot.copy_message(chat_id=group_id, from_chat_id=message.chat.id, message_id=message.message_id)
-            await message.answer('Пост сделан.\nСледующий пост можно будет сделать через 24 часа')
+            await message.answer('Пост сделан.\nСледующий пост можно будет сделать через 3 часа')
             cursor.execute('UPDATE users_info_table SET last_post = ? WHERE id = ?', (message.text, message.from_user.id))
             conn.commit()
             
-            next_post = int(time.time()) + 86400
+            next_post = int(time.time()) + 10800
             cursor.execute('UPDATE users_info_table SET is_making_post = 0, cooldown = ? WHERE id = ?', (next_post, message.from_user.id))
             conn.commit()
         except Exception:
