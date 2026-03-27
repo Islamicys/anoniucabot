@@ -23,6 +23,8 @@ async def start(message: Message):
 
 @rout.message(Command('post'))
 async def post(message: Message):
+    cursor.execute('INSERT OR IGNORE INTO users_info_table (id, full_name, username, is_making_post, cooldown) VALUES (?,?,?,0,0)', (message.from_user.id, message.from_user.full_name, message.from_user.username,))
+    conn.commit()
     cursor.execute('SELECT cooldown FROM users_info_table WHERE id = ?', (message.from_user.id,))
     result = cursor.fetchone()
     current_time = int(time.time())
