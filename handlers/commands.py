@@ -54,7 +54,7 @@ async def suggest(message: Message, bot: Bot):
 
 @rout.message(Command('anssagg'))
 async def anssagg(message: Message, bot: Bot):
-    if message.from_user.username != 'Icaomo' or message.from_user.username != 'xanxss01':
+    if message.from_user.username != 'Icaomo' and message.from_user.username != 'xanxss01':
         return
     parts = message.text.split()
     text = parts[2:]
