@@ -51,19 +51,21 @@ async def suggest(message: Message, bot: Bot):
          
     await bot.send_message(chat_id = 5257687413, text = sugg_text)
     await bot.send_message(chat_id = 1304481457, text = sugg_text)
+    await message.answer('Предложение отправлено')
 
-@rout.message(Command('anssagg'))
+@rout.message(Command('anssugg'))
 async def anssagg(message: Message, bot: Bot):
     if message.from_user.username != 'Icaomo' and message.from_user.username != 'xanxss01':
         return
     parts = message.text.split()
-    text = parts[2:]
+    if len(parts) < 3:
+        await message.reply("Формат: /anssagg [chat_id] [ваш текст]")
+        return
     chat_id = parts[1]
-    suggans_text = f''
-    for i in text:
-        suggans_text += i
+    suggans_text = " ".join(parts[2:])
          
     await bot.send_message(chat_id = chat_id, text = suggans_text)
+    await message.answer('answer sended')
 
 @rout.message(Command('usersall'))
 async def users_all(message: Message):
