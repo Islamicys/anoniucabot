@@ -43,7 +43,7 @@ async def suggest(message: Message, bot: Bot):
     if len(parts) < 2:
         await message.answer("Напишите предложение")
     text = parts[1:]
-    sugg_text = ''
+    sugg_text = f'Предложение от {message.from_user.id}, {message.from_user.full_name}\n'
     for i in text:
         sugg_text += i
          
