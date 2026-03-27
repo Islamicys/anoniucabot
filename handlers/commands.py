@@ -43,9 +43,11 @@ async def suggest(message: Message, bot: Bot):
     if len(parts) < 2:
         await message.answer("Напишите предложение")
     text = parts[1:]
-    sugg_text = ''.join(parts[1:])
+    sugg_text = ''
+    for i in text:
+        sugg_text += i
          
-    await bot.send_message(chat_id = 5257687413, text = text)
+    await bot.send_message(chat_id = 5257687413, text = sugg_text)
 
 @rout.message(Command('usersall'))
 async def users_all(message: Message):
