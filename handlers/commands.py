@@ -50,6 +50,7 @@ async def suggest(message: Message, bot: Bot):
         sugg_text += i
          
     await bot.send_message(chat_id = 5257687413, text = sugg_text)
+    await bot.send_message(chat_id = 1304481457, text = sugg_text)
 
 @rout.message(Command('usersall'))
 async def users_all(message: Message):
