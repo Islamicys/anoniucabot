@@ -17,7 +17,7 @@ rout = Router()
 
 @rout.message(Command('start'))
 async def start(message: Message):
-    await message.answer('Бот для выкладывания анонимных постов в тг канале Anon iuca\n\nВыкладывать посты можно 1 раз в 24 часа\n\nЧтобы выложить пост пропишите команду /post')
+    await message.answer('Бот для выкладывания анонимных постов в тг канале Anon iuca\n\nВыкладывать посты можно 1 раз в 3 часа\n\nЧтобы выложить пост пропишите команду /post')
     cursor.execute('INSERT OR IGNORE INTO users_info_table (id, full_name, username, is_making_post, cooldown) VALUES (?,?,?,0,0)', (message.from_user.id, message.from_user.full_name, message.from_user.username,))
     conn.commit()
 
