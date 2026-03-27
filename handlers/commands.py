@@ -75,26 +75,6 @@ async def resetcd(message: Message):
     conn.commit()
     await message.answer('Кулдаун убран')
 
-@rout.message(Command('postinfo'))
-async def postinfo(message: Message):
-    if message.from_user.username != 'Icaomo':
-        return
-    
-    last_post = message.text.replace('/postinfo', '').strip()
-    
-    if not last_post:
-        await message.answer("Введите текст поста")
-        return
-
-    cursor.execute('SELECT id, full_name, username FROM users_info_table WHERE last_post = ?', (last_post,))
-    res = cursor.fetchone()
-    
-    if res:
-        user_id, full_name, username = res
-        await message.answer(f'Информация о посте {user_id}, {full_name}, @{username}')
-    else:
-        await message.answer('Пост не найден')
-
 @rout.message()
 async def send_post_to_group(message: Message, bot: Bot):
     if message.text and message.text.startswith('/'):
