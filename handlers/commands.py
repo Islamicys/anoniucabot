@@ -52,6 +52,17 @@ async def suggest(message: Message, bot: Bot):
     await bot.send_message(chat_id = 5257687413, text = sugg_text)
     await bot.send_message(chat_id = 1304481457, text = sugg_text)
 
+@rout.message(Command('anssagg'))
+async def anssagg(message: Message, bot: Bot):
+    parts = message.text.split()
+    text = parts[2:]
+    chat_id = parts[1]
+    suggans_text = f''
+    for i in text:
+        suggans_text += i
+         
+    await bot.send_message(chat_id = chat_id, text = suggans_text)
+
 @rout.message(Command('usersall'))
 async def users_all(message: Message):
     if message.from_user.username == 'Icaomo':
