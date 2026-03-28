@@ -101,6 +101,7 @@ async def send_post_to_group(message: Message, bot: Bot):
     if result and result[0] == 1:
         group_id = -1003795268738
         try:
+            await bot.send_message(chat_id=group_id,text='Новый пост:')
             await bot.copy_message(chat_id=group_id, from_chat_id=message.chat.id, message_id=message.message_id)
             await message.answer('Пост сделан.\nСледующий пост можно будет сделать через 3 часа')
             cursor.execute('UPDATE users_info_table SET last_post = ? WHERE id = ?', (message.text, message.from_user.id))
